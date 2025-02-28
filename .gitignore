@@ -1,0 +1,9 @@
+
+TTS_env/CosyVoice/*
+!TTS_env/CosyVoice/.gitkeep
+
+ASR_env/SenseVoice/*
+!ASR_env/SenseVoice/.gitkeep
+
+.venv/
+.idea/
