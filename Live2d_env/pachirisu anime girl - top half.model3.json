@@ -1,0 +1,87 @@
+{
+  "Version": 3,
+  "Type": 0,
+  "FileReferences": {
+    "Moc": "pachirisu anime girl - top half.moc3",
+    "Textures": [
+      "pachirisu anime girl - top half.4096/texture_00.png"
+    ],
+    "Physics": "pachirisu anime girl - top half.physics3.json",
+    "PhysicsV2": {
+      "File": "pachirisu anime girl - top half.physics3.json"
+    }
+  },
+  "Controllers": {
+    "ParamHit": {
+      "Enabled": true
+    },
+    "ParamLoop": {
+      "Enabled": true
+    },
+    "KeyTrigger": {
+      "Enabled": true
+    },
+    "ParamTrigger": {
+      "Enabled": true
+    },
+    "AreaTrigger": {
+      "Enabled": true
+    },
+    "HandTrigger": {
+      "Enabled": true
+    },
+    "EyeBlink": {
+      "MinInterval": 500,
+      "MaxInterval": 6000,
+      "Enabled": true
+    },
+    "LipSync": {
+      "Gain": 5.0,
+      "Enabled": true
+    },
+    "MouseTracking": {
+      "SmoothTime": 0.15,
+      "Enabled": true
+    },
+    "AutoBreath": {
+      "Enabled": true
+    },
+    "ExtraMotion": {
+      "Enabled": true
+    },
+    "Accelerometer": {
+      "Enabled": true
+    },
+    "Microphone": {
+      "Enabled": true
+    },
+    "Transform": {},
+    "FaceTracking": {
+      "Enabled": true
+    },
+    "HandTracking": {
+      "Enabled": true
+    },
+    "ParamValue": {
+      "Enabled": true
+    },
+    "PartOpacity": {
+      "Enabled": true
+    },
+    "ArtmeshOpacity": {
+      "Enabled": true
+    },
+    "ArtmeshColor": {
+      "Enabled": true
+    },
+    "ArtmeshCulling": {
+      "DefaultMode": 0
+    },
+    "IntimacySystem": {
+      "Enabled": true
+    }
+  },
+  "Options": {
+    "TexType": 0
+  }
+}
