@@ -41,9 +41,12 @@ class LLMManager:
         os.makedirs(self.tmp_path, exist_ok=True)
 
         if online_model == 0:
-            from groq import Groq
-            self.client = Groq(api_key=Config.grop_key)
-            self.model_name = "llama-3.3-70b-versatile"
+#            from groq import Groq
+#            self.client = Groq(api_key=Config.grop_key)
+#            self.model_name = "llama-3.3-70b-versatile"
+            # Point to the local server
+            self.client = OpenAI(api_key="lm-studio", base_url="http://localhost:1234/v1")
+            self.model_name = "model-identifier" # 确定本地模型
         elif online_model == 1:
             if model_choice == 1:
                 self.client = OpenAI(api_key=Config.openai_key)
