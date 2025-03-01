@@ -6,6 +6,9 @@
 [![TTS](https://img.shields.io/badge/TTS-CosyVoice-orange.svg)](https://github.com/FunAudioLLM/CosyVoice)
 [![Live2D](https://img.shields.io/badge/Live2D-v3-blue.svg)](https://github.com/Arkueid/live2d-py)
 
+[![Python](https://img.shields.io/badge/Python-3.8+-yellow.svg)](https://www.python.org/downloads/)
+[![Miniconda](https://img.shields.io/badge/Anaconda-Miniconda-violet.svg)](https://docs.anaconda.net.cn/miniconda/install/)
+
 > **Live2D + ASR + LLM + TTS** → 实时语音互动 | 本地部署 / 云端推理
 
 ---
@@ -27,7 +30,12 @@
 - 对历次模型对话的时间与内容进行**存档**，便于查找过往对话内容。可存档内容包括模型的**历史语音输出**。该功能可在配置文件中关闭，关闭后再次进行对话时将清除历史对话的语音数据，**减清内存压力**。
 - 重构Live2d模型角色的**眼神跟随**与**眨眼逻辑**，即使live2d模型没有内置眨眼逻辑，也可自然眨眼。编写**嘴型变化**逻辑，读取TTS模块输出的音频文件，将实时音频大小转化至live2d模型的嘴型变化。
 - 修改CosyVoice模型的API接口程序，改变生成语音文件打开方式，允许**直接保存**生成文件；对于长文本下分段生成的语音文件，**合并**为单一文件。
-![Live2D 运行展示](Live2d_env/running_photo.jpg)
+<p align="center">
+  <img src="Live2d_env/running_photo.jpg" alt="Live2D 运行展示" width="620px">
+  <br>
+  <b>Live2D 运行展示</b>
+</p>
+
 
 #### 🎬 运行效果
 
@@ -63,7 +71,7 @@
   
 ⚠️ **注意**：  
 本项目的 **TTS 模块** 基于 **conda 环境** 运行，需要 **预先安装 Miniconda**。  
-🔗 你可以从 [Miniconda 官网](https://docs.conda.io/en/latest/miniconda.html) 下载。
+🔗 你可以从 [Miniconda 官网](https://docs.anaconda.net.cn/miniconda/install/) 下载。
 
 ---
 
