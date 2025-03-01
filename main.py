@@ -11,16 +11,16 @@ from config import Config
 class MainManager:
     def __init__(self):
 
-        # 初始化主管理器，整合 TTS_API, TTS, ASR, LLM, Live2D
+        # Initialize the main manager, integrating TTS_API, TTS, ASR, LLM, and Live2D.
 
-        # 启动 TTS API 并确保 API 可用
+        # Start the TTS API and ensure the API is available.
         self.tts_api_manager = TTSAPIManager(Config.SHOW_WINDOW)
         api_ready = self.tts_api_manager.start_tts_api()
         if not api_ready:
-            print("TTS API 启动失败，程序终止！")
+            print("TTS API startup failed, program terminated!")
             return
 
-        # 初始化其他模块
+        # Initialize other modules
         self.asr_manager = ASRManager()
         self.tts_manager = TTSManager()
         self.llm_manager = LLMManager()
@@ -30,7 +30,7 @@ class MainManager:
 
         self.history_file = Config.LLM_CONVERSATION_HISTORY
 
-        # 启动 Live2D 窗口（确保一直运行）
+        # Start Live2D window (ensure it keeps running).
         live2d_thread = threading.Thread(target=self.live2d_manager.play_live2d_once)
         live2d_thread.start()
 
@@ -42,7 +42,7 @@ class MainManager:
             print(f">>> {user_input}")
 
             if user_input.lower() in ("exit。", "quit。", "q。", "结束。", "再见。"):
-                print("已退出对话。")
+                print("Conversation exited.")
                 break
 
             reply = self.llm_manager.chat_once(user_input)
