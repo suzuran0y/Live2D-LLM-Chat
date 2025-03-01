@@ -2,6 +2,7 @@
 import os
 import shutil
 import time
+import requests
 from openai import OpenAI
 from config import Config
 
@@ -41,12 +42,8 @@ class LLMManager:
         os.makedirs(self.tmp_path, exist_ok=True)
 
         if online_model == 0:
-#            from groq import Groq
-#            self.client = Groq(api_key=Config.grop_key)
-#            self.model_name = "llama-3.3-70b-versatile"
-            # Point to the local server
-            self.client = OpenAI(api_key="lm-studio", base_url="http://localhost:1234/v1")
-            self.model_name = "model-identifier" # 确定本地模型
+            self.model_name = Config.model_name # 确定本地模型
+            self.api_url = Config.api_url
         elif online_model == 1:
             if model_choice == 1:
                 self.client = OpenAI(api_key=Config.openai_key)
@@ -60,13 +57,32 @@ class LLMManager:
         # 调用 LLM 进行对话
         # param messages: 对话列表
         # return: 生成的回复文本
+        if Config.online_model == "online":
+            response = self.client.chat.completions.create(
+                model=self.model_name,
+                messages=messages,
+                stream=False
+            )
+            return response.choices[0].message.content.strip()
+        elif Config.online_model == "offline":
+            data = {
+            "model": self.model_name,
+            "messages": self.conversation}
+            # 请求头（确保 `User-Agent` 避免 Python 请求被拦截）
+            headers = {"Content-Type": "application/json","User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"} # 伪装浏览器请求
+            # 使用 `json=data`（避免 `json.dumps()` 出现错误）
+            response = requests.post(self.api_url, headers=headers, json=data)
+            # 解析返回结果
+            if response.status_code == 200:
+                result = response.json()
+                # print("回复:", result["choices"][0]["message"]["content"])
+                return result["choices"][0]["message"]["content"]
+            else:
+                print(f"请求失败，状态码: {response.status_code}")
+                print("错误信息:", response.text)
 
-        response = self.client.chat.completions.create(
-            model=self.model_name,
-            messages=messages,
-            stream=False
-        )
-        return response.choices[0].message.content.strip()
+
+
 
     def summarize_conversation(self):
 
