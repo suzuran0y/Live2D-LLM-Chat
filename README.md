@@ -30,7 +30,12 @@
 - **Conversation logging** records the timestamp and dialogue history, including **TTS audio outputs**, making it easy to review past interactions. This feature can be disabled in the config file to **reduce memory usage**.
 - Enhanced Live2D **eye-tracking** and **blinking logic** to provide natural blinking even if the Live2D model lacks built-in logic. Implements **lip-sync mechanics** by analyzing real-time audio volume from the TTS output.
 - Modifies CosyVoice API to **directly save** generated speech files and **merge** segmented audio for long text synthesis.
-![Live2D Running Showcase](Live2d_env/running_photo.jpg)
+
+<p align="center">
+  <img src="Live2d_env/running_photo.jpg" alt="Live2D 运行展示" width="620px">
+  <br>
+  <b>Live2D Running Showcase</b>
+</p>
 
 #### 🎬 Interaction Demo
 
