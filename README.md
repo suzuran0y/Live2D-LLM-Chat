@@ -6,6 +6,9 @@
 [![TTS](https://img.shields.io/badge/TTS-CosyVoice-orange.svg)](https://github.com/FunAudioLLM/CosyVoice)
 [![Live2D](https://img.shields.io/badge/Live2D-v3-blue.svg)](https://github.com/Arkueid/live2d-py)
 
+[![Python](https://img.shields.io/badge/Python-3.8+-yellow.svg)](https://www.python.org/downloads/)
+[![Miniconda](https://img.shields.io/badge/Anaconda-Miniconda-violet.svg)](https://www.anaconda.com/docs/getting-started/anaconda/install)
+
 > **Live2D + ASR + LLM + TTS** → Real-time voice interaction | Local deployment / Cloud inference
 
 ---
