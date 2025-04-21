@@ -241,7 +241,7 @@ class Config:
 
 ---
 ### 📌 4.3. 配置 LLM 模型
-本地化部署**LLM 模型**依赖于**LM Studio，请按照以下步骤进行：
+本地化部署**LLM 模型**依赖于**LM Studio**，请按照以下步骤进行：
 
 #### 1️⃣ 安装 LM Studio
 可从[GitHub 官方仓库](https://github.com/lmstudio-ai) 或 [LM Studio 官网](https://lmstudio.ai/) 下载安装。
