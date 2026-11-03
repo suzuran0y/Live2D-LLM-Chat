@@ -15,7 +15,7 @@ The legacy CosyVoice2 project documentation ➡ [The previous version](docs/lega
 
 **Live2D-LLM-Chat** is an AI interaction project that integrates **Live2D virtual avatars**, **Automatic Speech Recognition (ASR)**, **Large Language Models (LLM)** and **Text-to-Speech (TTS)**. A virtual character recognizes the user's speech, generates responses through a language model, synthesizes speech and drives Live2D lip sync. Text chat is also available.
 
-v2 uses Electron for the desktop, avatar, conversations and playback, with separate Python speech workers. Avatar and speech architecture draw on [Cute-Partner](https://github.com/suzuran0y/Cute-Partner). The current preview targets Windows x64.
+v2 uses Electron for the desktop, avatar, conversations and playback, with separate Python speech workers. Avatar and speech architecture draw on [Cute-Partner](https://github.com/suzuran0y/Cute-Partner).
 
 ### 1.1. Main Features
 
