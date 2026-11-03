@@ -1,0 +1,386 @@
+{
+  "source": "suzuran0y/Cute-Partner",
+  "revision": "cfecb1949fc73d2bda43d506d0a5f0825b707d2a",
+  "files": [
+    {
+      "path": "Framework/Shaders/WebGL/fragshadersrcalphablend.frag",
+      "gitBlob": "f308687c97e63f1ad860220812fe24f4569c9a9c",
+      "bytes": 2189
+    },
+    {
+      "path": "Framework/Shaders/WebGL/fragshadersrccolorblend.frag",
+      "gitBlob": "c8dc7253b2edda473c007b92a7b247a3a2d54f50",
+      "bytes": 7525
+    },
+    {
+      "path": "Framework/Shaders/WebGL/fragshadersrccopy.frag",
+      "gitBlob": "4c125e2a3bf1441af4aadc9c1444be5a8912af08",
+      "bytes": 429
+    },
+    {
+      "path": "Framework/Shaders/WebGL/fragshadersrcmaskinvertedpremultipliedalpha.frag",
+      "gitBlob": "329d9b3375e7a70863bf650fd2145067612bfe62",
+      "bytes": 1051
+    },
+    {
+      "path": "Framework/Shaders/WebGL/fragshadersrcmaskpremultipliedalpha.frag",
+      "gitBlob": "0561a5bc5d1323393b1b66333c45570d5b3ff648",
+      "bytes": 1043
+    },
+    {
+      "path": "Framework/Shaders/WebGL/fragshadersrcpremultipliedalpha.frag",
+      "gitBlob": "2a3f728b65cf3c3c3c0f33cc22006253df2c00c7",
+      "bytes": 747
+    },
+    {
+      "path": "Framework/Shaders/WebGL/fragshadersrcpremultipliedalphablend.frag",
+      "gitBlob": "44b6cc7432d284c259d9b5871d80a547a9276240",
+      "bytes": 2038
+    },
+    {
+      "path": "Framework/Shaders/WebGL/fragshadersrcsetupmask.frag",
+      "gitBlob": "308f5624efcc7c84e8ff493bb3233ec62f24e219",
+      "bytes": 736
+    },
+    {
+      "path": "Framework/Shaders/WebGL/vertshadersrc.vert",
+      "gitBlob": "fb9b500900ada8eda3b8b02a546a766251ee6c92",
+      "bytes": 465
+    },
+    {
+      "path": "Framework/Shaders/WebGL/vertshadersrcblend.vert",
+      "gitBlob": "5839d768acd2a4fa0f0cb1f4662d593ed57e9a32",
+      "bytes": 738
+    },
+    {
+      "path": "Framework/Shaders/WebGL/vertshadersrccopy.vert",
+      "gitBlob": "65295fb0abbb9e30933fe208e36c97f7cb99ab19",
+      "bytes": 392
+    },
+    {
+      "path": "Framework/Shaders/WebGL/vertshadersrcmasked.vert",
+      "gitBlob": "100e9154228f1783f30e9419681e77d46aff70ed",
+      "bytes": 559
+    },
+    {
+      "path": "Framework/Shaders/WebGL/vertshadersrcsetupmask.vert",
+      "gitBlob": "ccdb2bb459fca65c767518022e4e96d4288cf4b1",
+      "bytes": 536
+    },
+    {
+      "path": "sdk/CORE-LICENSE.md",
+      "gitBlob": "daf4f58bde2755bbc2d3c1dd98206105400eaf47",
+      "bytes": 1385
+    },
+    {
+      "path": "sdk/LICENSE.md",
+      "gitBlob": "efbe71df1a225d5b268379165033af1adb44d42d",
+      "bytes": 3042
+    },
+    {
+      "path": "sdk/NOTICE.md",
+      "gitBlob": "6bd99207c9a0a38c4fcfd4da1af042b4173d9806",
+      "bytes": 1535
+    },
+    {
+      "path": "sdk/cubismdefaultparameterid.js",
+      "gitBlob": "b18dd2e2a595199135b47e18988c7059ee9da85c",
+      "bytes": 6474
+    },
+    {
+      "path": "sdk/cubismframeworkconfig.js",
+      "gitBlob": "3c8c30230d640c84bf0b265213f6a4d6a7ea5398",
+      "bytes": 1100
+    },
+    {
+      "path": "sdk/cubismmodelsettingjson.js",
+      "gitBlob": "d6ba5571104f941c60ad1490b606e986c03a493d",
+      "bytes": 24737
+    },
+    {
+      "path": "sdk/effect/cubismbreath.js",
+      "gitBlob": "9061a2063bbd9f8d695ad835a9a0b3f838c5fd78",
+      "bytes": 3016
+    },
+    {
+      "path": "sdk/effect/cubismeyeblink.js",
+      "gitBlob": "37580be0a89d4b0ebf73cf0c77c498c8dfe1e5b5",
+      "bytes": 6875
+    },
+    {
+      "path": "sdk/effect/cubismlook.js",
+      "gitBlob": "06255a97969901c3a40f07856307e8394ca614ad",
+      "bytes": 3017
+    },
+    {
+      "path": "sdk/effect/cubismpose.js",
+      "gitBlob": "e7e4424b692eb670da54dbdc0fe44c17da8f1ce0",
+      "bytes": 11692
+    },
+    {
+      "path": "sdk/icubismallcator.js",
+      "gitBlob": "99b3479d5132c41495c3d0310b62e722fbba7aea",
+      "bytes": 836
+    },
+    {
+      "path": "sdk/icubismmodelsetting.js",
+      "gitBlob": "efc9857916da29e96445f266ea9e501edd1883eb",
+      "bytes": 821
+    },
+    {
+      "path": "sdk/id/cubismid.js",
+      "gitBlob": "c3c9c95a759eeea7d771ed3b21346eb4a95e3373",
+      "bytes": 2256
+    },
+    {
+      "path": "sdk/id/cubismidmanager.js",
+      "gitBlob": "f4f53fe41f9a6e109f986f15482a75a5933465f4",
+      "bytes": 2468
+    },
+    {
+      "path": "sdk/live2dcubismcore.min.js",
+      "gitBlob": "07c58072b90e75e6dd7757d91006ebd51616be3a",
+      "bytes": 228042
+    },
+    {
+      "path": "sdk/live2dcubismframework.js",
+      "gitBlob": "68def7a16463593efa4bdfc4751ff4e31ecc1450",
+      "bytes": 9238
+    },
+    {
+      "path": "sdk/math/cubismmath.js",
+      "gitBlob": "0fc78e640999f24a107ba81fa5e6e14a86e69bcd",
+      "bytes": 9806
+    },
+    {
+      "path": "sdk/math/cubismmatrix44.js",
+      "gitBlob": "6eb5c2a2c0af5b5bdc966e8fb10807ac17cf554f",
+      "bytes": 8345
+    },
+    {
+      "path": "sdk/math/cubismmodelmatrix.js",
+      "gitBlob": "ac8b6b78f623a613f87da89b22c78e38887432c4",
+      "bytes": 4907
+    },
+    {
+      "path": "sdk/math/cubismtargetpoint.js",
+      "gitBlob": "bd2e0ab1681f95ee4f1f34df86ce6f4859dfbf59",
+      "bytes": 5412
+    },
+    {
+      "path": "sdk/math/cubismvector2.js",
+      "gitBlob": "27a2b61f7dc7331ae204be641bd5a717ddf5ce00",
+      "bytes": 4059
+    },
+    {
+      "path": "sdk/math/cubismviewmatrix.js",
+      "gitBlob": "b0c9b07769ef677aa2bdd1acf05563f0d3b57e79",
+      "bytes": 7903
+    },
+    {
+      "path": "sdk/model/cubismmoc.js",
+      "gitBlob": "cff3edf8214e0ca7b07f64429f69da701895a736",
+      "bytes": 3527
+    },
+    {
+      "path": "sdk/model/cubismmodel.js",
+      "gitBlob": "92f17e81b3de49ae754b9d2d2f97d2d9cf2e7702",
+      "bytes": 60736
+    },
+    {
+      "path": "sdk/model/cubismmodelmultiplyandscreencolor.js",
+      "gitBlob": "584f4d86058b81f608bed35810093bf6bf66656a",
+      "bytes": 30016
+    },
+    {
+      "path": "sdk/model/cubismmodeluserdata.js",
+      "gitBlob": "91ce8f898483bffd1f42fd40f8a03e8779ed5848",
+      "bytes": 3708
+    },
+    {
+      "path": "sdk/model/cubismmodeluserdatajson.js",
+      "gitBlob": "a2fafc77179ada7e597fc1fd3446a4ffeeaea75c",
+      "bytes": 3077
+    },
+    {
+      "path": "sdk/model/cubismusermodel.js",
+      "gitBlob": "0424ba5ddb25002336500303450f3ea92a72fe6c",
+      "bytes": 13682
+    },
+    {
+      "path": "sdk/motion/acubismmotion.js",
+      "gitBlob": "e9cb5a1882b9e7f89927eab49ec580900398746c",
+      "bytes": 12188
+    },
+    {
+      "path": "sdk/motion/cubismbreathupdater.js",
+      "gitBlob": "b61cf0d80623ac76b730f624c39f8b790ad35492",
+      "bytes": 1347
+    },
+    {
+      "path": "sdk/motion/cubismexpressionmotion.js",
+      "gitBlob": "bf0f0f47437e4d73f28736039ff0e2f615e55314",
+      "bytes": 12069
+    },
+    {
+      "path": "sdk/motion/cubismexpressionmotionmanager.js",
+      "gitBlob": "aa335fe66d3046af522cecfb94ab19fd58f30438",
+      "bytes": 8777
+    },
+    {
+      "path": "sdk/motion/cubismexpressionupdater.js",
+      "gitBlob": "6288501a19eab05384c0e49296fc0efce863c6e8",
+      "bytes": 1423
+    },
+    {
+      "path": "sdk/motion/cubismeyeblinkupdater.js",
+      "gitBlob": "5911cf999d2b61baa9727666fdfaab2c6c75c5ff",
+      "bytes": 1574
+    },
+    {
+      "path": "sdk/motion/cubismlipsyncupdater.js",
+      "gitBlob": "04fd6f19fc63951d6a70500387a3abbf77e4da5c",
+      "bytes": 2254
+    },
+    {
+      "path": "sdk/motion/cubismlookupdater.js",
+      "gitBlob": "25b9130cd1fd63fb2a0d698509a61db55f76bc12",
+      "bytes": 1524
+    },
+    {
+      "path": "sdk/motion/cubismmotion.js",
+      "gitBlob": "c8d9b512273c408f365ffc6ea5c969ea970736b7",
+      "bytes": 37658
+    },
+    {
+      "path": "sdk/motion/cubismmotioninternal.js",
+      "gitBlob": "db16e21e0ca0a56bdef1cd7419d8512011d7977b",
+      "bytes": 3973
+    },
+    {
+      "path": "sdk/motion/cubismmotionjson.js",
+      "gitBlob": "82cbcc5426340e304538f835790d9bba322c156e",
+      "bytes": 13425
+    },
+    {
+      "path": "sdk/motion/cubismmotionmanager.js",
+      "gitBlob": "142ef99c2c763683e34e9becece89fb1ea96d460",
+      "bytes": 3435
+    },
+    {
+      "path": "sdk/motion/cubismmotionqueueentry.js",
+      "gitBlob": "0b59f1c42ea566615120d80b46ffc04e63b82902",
+      "bytes": 6314
+    },
+    {
+      "path": "sdk/motion/cubismmotionqueuemanager.js",
+      "gitBlob": "5c8f3612cfbea13ac9f6f202118cfe787c42cc9d",
+      "bytes": 9760
+    },
+    {
+      "path": "sdk/motion/cubismphysicsupdater.js",
+      "gitBlob": "075613a31bc9987967eaa224f4c6b3d744dbc3db",
+      "bytes": 1352
+    },
+    {
+      "path": "sdk/motion/cubismposeupdater.js",
+      "gitBlob": "f7f33658551de769fe1bb167f8bad7f9c7549e39",
+      "bytes": 1323
+    },
+    {
+      "path": "sdk/motion/cubismupdatescheduler.js",
+      "gitBlob": "dc53fb0b14966619724a3e15758c13264bb05161",
+      "bytes": 5165
+    },
+    {
+      "path": "sdk/motion/icubismupdater.js",
+      "gitBlob": "839f1736c8f62c4083a847f13f0be7fbec4d234c",
+      "bytes": 3760
+    },
+    {
+      "path": "sdk/motion/iparameterprovider.js",
+      "gitBlob": "4b9a0d16333d470c6fa60c36dbf05cdd340510ee",
+      "bytes": 823
+    },
+    {
+      "path": "sdk/physics/cubismphysics.js",
+      "gitBlob": "93ab53d2f41c1eadae162edb19768321baf1e485",
+      "bytes": 42369
+    },
+    {
+      "path": "sdk/physics/cubismphysicsinternal.js",
+      "gitBlob": "b4267305eb2edfd30f83fb79d78240773613e560",
+      "bytes": 4104
+    },
+    {
+      "path": "sdk/physics/cubismphysicsjson.js",
+      "gitBlob": "b24956cb1bb6f0800e048d81f0ac0b41e1480966",
+      "bytes": 18554
+    },
+    {
+      "path": "sdk/rendering/cubismclippingmanager.js",
+      "gitBlob": "980114b1b7fb54bb11c2d265430a348daa535231",
+      "bytes": 38369
+    },
+    {
+      "path": "sdk/rendering/cubismoffscreenmanager.js",
+      "gitBlob": "4630e92a2cca9ab8e8fd7d926439f0249159466a",
+      "bytes": 16834
+    },
+    {
+      "path": "sdk/rendering/cubismoffscreenrendertarget_webgl.js",
+      "gitBlob": "3092c45ac226e6fb2dec6d8ac515c944c31fa972",
+      "bytes": 6658
+    },
+    {
+      "path": "sdk/rendering/cubismrenderer.js",
+      "gitBlob": "4487ab08ff3417aca9711f92f257a2e33c61c16e",
+      "bytes": 10829
+    },
+    {
+      "path": "sdk/rendering/cubismrenderer_webgl.js",
+      "gitBlob": "a573b1c46cfa99cee179f26b8c9f23f0c16870de",
+      "bytes": 58890
+    },
+    {
+      "path": "sdk/rendering/cubismrendertarget_webgl.js",
+      "gitBlob": "5bf35167f8fb218549d9f1c8c60c398faa977a3f",
+      "bytes": 7970
+    },
+    {
+      "path": "sdk/rendering/cubismshader_webgl.js",
+      "gitBlob": "3058b1c237e6e5fb1d9151f1356c3e593cd56657",
+      "bytes": 67153
+    },
+    {
+      "path": "sdk/type/csmrectf.js",
+      "gitBlob": "5dc285cbc7d30e9c63b9d82691d507e7b8e05b1e",
+      "bytes": 1935
+    },
+    {
+      "path": "sdk/utils/cubismarrayutils.js",
+      "gitBlob": "8c6d62b4ee57167b83737f86e64c985c4ad0a630",
+      "bytes": 1126
+    },
+    {
+      "path": "sdk/utils/cubismdebug.js",
+      "gitBlob": "9a29bced1495b4e8e3042532e6f51190d2164f02",
+      "bytes": 5061
+    },
+    {
+      "path": "sdk/utils/cubismjson.js",
+      "gitBlob": "d08274ed1b2677b73e48ae077b83797495acee46",
+      "bytes": 29014
+    },
+    {
+      "path": "sdk/utils/cubismjsonextension.js",
+      "gitBlob": "c8403675e48fc70b264e58bb071c93b6b350a99c",
+      "bytes": 4213
+    },
+    {
+      "path": "sdk/utils/cubismstring.js",
+      "gitBlob": "59e446362964ceeff0d8d9cb8b269ac3ed41b327",
+      "bytes": 3649
+    }
+  ]
+}

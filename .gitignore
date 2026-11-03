@@ -6,4 +6,65 @@ ASR_env/SenseVoice/*
 !ASR_env/SenseVoice/.gitkeep
 
 .venv/
+.venv-v2/
+.venv-asr/
 .idea/
+
+# Local environments and generated caches (including nested projects).
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Local credentials and generated runtime data.
+.env
+.env.*
+!.env.example
+/ASR_env/input_voice/*.wav
+/TTS_env/output_voice/
+/TTS_env/voice_history/
+/TTS_env/tmp/
+/LLM_env/conversation_history.txt
+
+# Distribution output; model weights are prepared separately.
+/dist/
+
+# Local research and documentation working notes are not publication inputs.
+/.local-notes/
+
+# Local v2 settings; the example remains versioned.
+/configs/v2.local.json
+/configs/*.cosyvoice-verified.json
+
+# JavaScript dependencies and desktop build output.
+node_modules/
+/apps/desktop/out/
+
+# Legacy local scripts, samples and nested workspaces are not v2 upload inputs.
+/config.py
+/live2d_LLM.py
+/PyCharm/
+/Live2d_env/frame_*.jpg
+/LLM_env/LM Studio/
+/TTS_env/voice_training_sample/
+/TTS_env/output_voice_text.txt
+
+# Prepare the proprietary Core locally; retain upstream notices in source.
+/packages/avatar/vendor/sdk/live2dcubismcore.min.js
+
+# Keep the v1 working copy locally without re-adding it to the v2 repository.
+/ASR.py
+/LLM.py
+/Live2d_animation.py
+/TTS.py
+/TTS_api.py
+/main.py
+/requirements.txt
+/ASR_env/
+/LLM_env/
+/TTS_env/
+/Live2d_env/.gitkeep
+/Live2d_env/.model3.json
+/Live2d_env/*.cdi3.json
+/requirements/asr-overlay-win-py312.lock.txt

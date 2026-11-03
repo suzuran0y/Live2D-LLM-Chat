@@ -1,0 +1,13 @@
+{
+  "package": "sql.js",
+  "version": "1.15.2",
+  "source": "https://registry.npmjs.org/sql.js/-/sql.js-1.15.2.tgz",
+  "archiveSha512": "66631816c64f6560ca209521dc0e6b767a51577841febec08a3c00cd2ccb9dfbfff424b1e286d4983b40f1bac08d62568c6b54561e379c8109fba9e5e87b8e52",
+  "npmIntegrityVerifiedBeforeExtraction": true,
+  "files": {
+    "LICENSE": "60a3f6e4d7b29b4321359e683b36cf198d24f58e24582070f56e6fa89d5ee2be",
+    "package.json": "384c3c1048b0d35ee8f09bbf8dfac4d62cbba4cb7082e3f1c549254e4f124405",
+    "dist/sql-wasm.js": "b46d4bddfdde8a787fc4764bd0a405cdfdf96fbd77e6a4e95446106826ecfa47",
+    "dist/sql-wasm.wasm": "0dfeecda2070b36da0cd4f6afa250af9453de528a983770f85b13d5d6b667572"
+  }
+}

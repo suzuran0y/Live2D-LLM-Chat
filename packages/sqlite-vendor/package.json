@@ -1,0 +1,58 @@
+{
+	"name": "sql.js",
+	"version": "1.15.2",
+	"description": "SQLite library with support for opening and writing databases, prepared statements, and more. Compiled to WebAssembly with Emscripten, with JavaScript bindings.",
+	"keywords": [
+		"sql",
+		"sqlite",
+		"stand-alone",
+		"relational",
+		"database",
+		"RDBMS",
+		"data",
+		"query",
+		"statement",
+		"emscripten",
+		"wasm",
+		"webassembly"
+	],
+	"license": "MIT",
+	"main": "./dist/sql-wasm.js",
+	"exports": {
+		".": {
+			"browser": "./dist/sql-wasm-browser.js",
+			"default": "./dist/sql-wasm.js"
+		},
+		"./dist/*": "./dist/*"
+	},
+	"scripts": {
+		"build": "make",
+		"rebuild": "npm run clean && npm run build",
+		"clean": "make clean",
+		"test": "npm run lint && npm run test-wasm && npm run test-wasm-debug && npm run test-wasm-browser && npm run test-wasm-inline && npm run test-wasm-inline-debug && npm run test-builds",
+		"lint": "eslint .",
+		"prettify": "eslint . --fix",
+		"test-wasm": "node --unhandled-rejections=strict test/all.js wasm",
+		"test-wasm-debug": "node --unhandled-rejections=strict test/all.js wasm-debug",
+		"test-wasm-browser": "node --unhandled-rejections=strict test/all.js wasm-browser",
+		"test-wasm-inline": "node --unhandled-rejections=strict test/all.js wasm-inline",
+		"test-wasm-inline-debug": "node --unhandled-rejections=strict test/all.js wasm-inline-debug",
+		"test-builds": "node --unhandled-rejections=strict test/builds.js",
+		"doc": "jsdoc -c .jsdoc.config.json && node scripts/doc-redirects.cjs"
+	},
+	"homepage": "http://github.com/sql-js/sql.js",
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/sql-js/sql.js.git"
+	},
+	"bugs": {
+		"url": "https://github.com/sql-js/sql.js/issues"
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"clean-jsdoc-theme": "^5.2.0",
+		"eslint": "^10.12.0",
+		"globals": "^17.13.0",
+		"jsdoc": "^4.0.5"
+	}
+}

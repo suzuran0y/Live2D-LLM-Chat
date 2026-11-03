@@ -1,0 +1,23 @@
+{
+  "name": "live2d-llm-chat-desktop",
+  "version": "2.0.0-dev.0",
+  "private": true,
+  "description": "Local LM Studio chat desktop for Live2D-LLM-Chat v2",
+  "main": "main.cjs",
+  "scripts": {
+    "setup": "node node_modules/electron/install.js",
+    "start": "node tools/launch.cjs",
+    "test": "node --test test/*.test.cjs",
+    "smoke": "node tools/launch.cjs --smoke",
+    "smoke:avatar": "node tools/launch.cjs --avatar-smoke",
+    "smoke:speech": "node tools/launch.cjs --speech-smoke",
+    "smoke:cosyvoice": "node tools/launch.cjs --cosyvoice-smoke",
+    "smoke:maintenance": "node tools/launch.cjs --maintenance-smoke"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "jsonc-parser": "3.3.1",
+    "sql.js": "file:../../packages/sqlite-vendor"
+  },
+  "devDependencies": {"electron": "45.2.1"}
+}

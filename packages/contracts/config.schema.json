@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Live2D-LLM-Chat settings v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "llm", "runtime", "resources", "audio"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "llm": {
+      "type": "object", "additionalProperties": false,
+      "required": ["baseUrl", "model", "apiKeyEnv", "timeoutSeconds", "contextTokens"],
+      "properties": {
+        "baseUrl": {"type": "string", "maxLength": 2048},
+        "model": {"type": "string", "maxLength": 200},
+        "apiKeyEnv": {"type": "string", "pattern": "^[A-Z_][A-Z0-9_]{0,99}$"},
+        "timeoutSeconds": {"type": "integer", "minimum": 1, "maximum": 300},
+        "contextTokens": {"type": "integer", "minimum": 1024, "maximum": 1048576}
+      }
+    },
+    "runtime": {
+      "type": "object", "additionalProperties": false,
+      "required": ["asrPython", "ttsPython"],
+      "properties": {
+        "asrPython": {"type": ["string", "null"], "minLength": 1, "maxLength": 4096},
+        "ttsPython": {"type": ["string", "null"], "minLength": 1, "maxLength": 4096}
+      }
+    },
+    "resources": {
+      "type": "object", "additionalProperties": false,
+      "required": ["legacyRoot", "avatarModel"],
+      "properties": {
+        "legacyRoot": {"type": "string", "minLength": 1, "maxLength": 4096},
+        "avatarModel": {"type": "string", "minLength": 1, "maxLength": 4096},
+        "avatarRoot": {"type": ["string", "null"], "minLength": 1, "maxLength": 4096},
+        "asrModel": {"type": "string", "minLength": 1, "maxLength": 4096},
+        "cosyvoiceRoot": {"type": ["string", "null"], "minLength": 1, "maxLength": 4096}
+      }
+    },
+    "audio": {
+      "type": "object", "additionalProperties": false,
+      "required": ["maxRecordingSeconds", "volume"],
+      "properties": {
+        "maxRecordingSeconds": {"type": "integer", "minimum": 1, "maximum": 60},
+        "volume": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    }
+  }
+}

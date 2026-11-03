@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'none'">
+<title>Live2D 角色</title><link rel="stylesheet" href="avatar.css"></head>
+<body><div id="toolbar"><span id="status" role="status">加载角色…</span><button id="open-chat" aria-label="打开聊天">聊天</button><button id="pause">暂停</button><button id="hide">隐藏</button></div>
+<canvas id="avatar" aria-label="Live2D 角色"></canvas><div id="error" role="status" hidden></div>
+<script src="vendor/sdk/live2dcubismcore.min.js"></script><script type="module" src="view.mjs"></script></body></html>

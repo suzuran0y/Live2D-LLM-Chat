@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Live2D LLM Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">L2</span><div><strong>Live2D LLM Chat</strong><span>本地对话空间</span></div></div>
+    <button id="new-conversation" class="primary new-button">＋ 新对话</button>
+    <div class="section-label">会话记录 <span>保存在本机</span></div>
+    <nav id="conversations" aria-label="会话列表"></nav>
+    <div class="sidebar-bottom"><span id="avatar-status" class="milestone">角色加载中</span><div class="avatar-controls"><button id="avatar-toggle" class="secondary">隐藏角色</button><button id="avatar-pause" class="secondary">暂停</button><button id="avatar-reload" class="secondary" hidden>重试</button></div><p>本地语音与桌面角色</p><button id="open-settings" class="secondary">连接设置</button><div class="data-actions"><button id="open-resources" class="text-button">资源管理</button><button id="open-history" class="text-button">导入旧历史</button></div></div>
+  </aside>
+  <main>
+    <header><div><span class="eyebrow">LOCAL CONVERSATION</span><h1 id="conversation-title">新对话</h1></div><button id="model-indicator" class="model-badge">尚未设置模型</button></header>
+    <section id="messages" aria-label="对话消息" aria-live="polite"></section>
+    <div id="notice" role="status" class="notice" hidden></div>
+    <div class="speech-bar"><label><input id="read-replies" type="checkbox"> 朗读回复</label><label for="speech-volume">音量</label><input id="speech-volume" type="range" min="0" max="1" step="0.05" value="0.65"><button id="open-voice" type="button" class="text-button">声音设置</button><span id="speech-status" role="status">系统语音未启用</span></div>
+    <form id="composer">
+      <label class="sr-only" for="message-input">发送消息</label>
+      <textarea id="message-input" placeholder="写下你的问题，或分享今天的想法…" rows="3" maxlength="12000"></textarea>
+      <div class="composer-bottom"><span id="input-hint">Enter 发送 · Shift + Enter 换行 · F8 录音</span><div><button id="record" type="button" class="secondary" title="F8 开始或结束录音">录音并发送</button><button id="stop" type="button" class="secondary" hidden>停止回应</button><button id="send" class="primary" type="submit">发送</button></div></div>
+    </form>
+    <footer>与本机模型交流 · 对话自动保存</footer>
+  </main>
+  <dialog id="settings-dialog">
+    <form id="settings-form">
+      <div class="dialog-heading"><div><span class="eyebrow">CONNECTION</span><h2>连接本地模型</h2></div><button id="close-settings" type="button" class="text-button" aria-label="关闭设置">关闭</button></div>
+      <p class="dialog-description">在 LM Studio 中加载模型并启动本地服务，然后填写下方连接信息。</p>
+      <label for="base-url">服务基础地址</label><input id="base-url" required type="url" placeholder="http://127.0.0.1:1234/v1">
+      <label for="model-name">模型标识</label><div class="model-row"><input id="model-name" list="model-options" maxlength="200" placeholder="输入模型标识，或从服务读取"><button id="load-models" type="button" class="secondary">读取模型</button></div><datalist id="model-options"></datalist>
+      <div class="settings-grid"><div><label for="timeout">超时（秒）</label><input id="timeout" required type="number" min="1" max="300"></div><div><label for="context-tokens">上下文预算</label><input id="context-tokens" required type="number" min="1024" max="1048576"></div></div>
+      <p class="settings-note">M1 仅支持本机地址；不需要创建云端密钥。读取模型使用已保存的连接设置。</p>
+      <div id="settings-status" role="status"></div><div class="dialog-actions"><button id="save-settings" type="submit" class="primary">保存设置</button></div>
+    </form>
+  </dialog>
+  <dialog id="voice-dialog">
+    <form id="voice-form">
+      <div class="dialog-heading"><h2>声音设置</h2><button id="close-voice" type="button" class="text-button">关闭</button></div>
+      <label for="voice-backend">语音方式</label><select id="voice-backend"><option value="system">Windows 系统语音</option><option value="cosyvoice3">CosyVoice3 自然语音</option></select>
+      <label for="voice-profile">音色</label><select id="voice-profile"></select>
+      <label class="voice-stream"><input id="voice-stream" type="checkbox" checked> 分块生成，尽早播放</label>
+      <p id="voice-availability" class="settings-note"></p>
+      <div class="voice-actions"><button id="voice-save" type="submit" class="primary">保存</button><button id="voice-preview" type="button" class="secondary">试听</button><button id="voice-reload" type="button" class="secondary">重载语音</button><button id="voice-stop" type="button" class="secondary">停止</button></div>
+      <details><summary>制作自己的音色</summary>
+        <p class="settings-note">选择3–30秒、16–96kHz的PCM WAV，并填写录音中的原话。制作结果只保存在本机。</p>
+        <label for="voice-name">音色名称</label><input id="voice-name" maxlength="40" placeholder="为声音取个名字">
+        <label for="voice-text">录音对应文字</label><textarea id="voice-text" maxlength="500" rows="3"></textarea>
+        <div class="voice-actions"><button id="voice-import" type="button" class="secondary">选择录音并制作</button><button id="voice-prepare" type="button" class="secondary">重新制作所选音色</button></div>
+      </details>
+      <div id="voice-status" role="status"></div>
+    </form>
+  </dialog>
+  <dialog id="history-dialog"><div class="dialog-heading"><h2>导入旧历史</h2><button id="history-close" class="text-button">关闭</button></div><p class="settings-note">导入内容作为存档查阅，不自动发送给模型。原文件保留，导入前自动备份会话库。</p><button id="history-choose" class="secondary">选择历史文本</button><p id="history-status" role="status"></p><div id="history-preview"></div><div class="dialog-actions"><button id="history-confirm" class="primary" disabled>确认导入预览内容</button></div></dialog>
+  <dialog id="resources-dialog"><div class="dialog-heading"><h2>资源管理</h2><button id="resources-close" class="text-button">关闭</button></div><p class="settings-note">基础聊天与系统朗读可以独立使用。角色和识别模型从单独资源包安装；已有自然语音环境可以直接接入。</p><div class="resource-actions"><button id="resources-choose" class="secondary">选择本地资源包</button><button id="resources-confirm" class="primary" disabled>安装此包</button><button id="resources-cosy" class="secondary">接入已有 CosyVoice3</button><button id="resources-python" class="secondary">选择识别解释器</button></div><p id="resources-status" role="status"></p></dialog>
+  <script src="audio-envelope.js"></script><script src="audio-output.js"></script><script src="recording.js"></script><script src="app.js"></script><script src="maintenance.js"></script>
+</body>
+</html>

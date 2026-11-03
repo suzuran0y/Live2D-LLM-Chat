@@ -1,0 +1,3 @@
+# Upstream checksums and Git blobs refer to the original file bytes.
+/packages/avatar/vendor/** -text -whitespace
+/packages/sqlite-vendor/** -text -whitespace

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "llm": {
+    "baseUrl": "http://127.0.0.1:1234/v1",
+    "model": "",
+    "apiKeyEnv": "LIVE2D_LLM_API_KEY",
+    "timeoutSeconds": 60,
+    "contextTokens": 8192
+  },
+  "runtime": {
+    "asrPython": null,
+    "ttsPython": null
+  },
+  "resources": {
+    "legacyRoot": "..",
+    "avatarModel": "Live2d_env/pachirisu anime girl - top half.model3.json",
+    "asrModel": "ASR_env/SenseVoice/models/SenseVoiceSmall",
+    "cosyvoiceRoot": null
+  },
+  "audio": {
+    "maxRecordingSeconds": 60,
+    "volume": 0.65
+  }
+}

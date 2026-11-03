@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Speech worker frame v1",
+  "type": "object", "additionalProperties": false,
+  "required": ["version", "type", "requestId", "payload"],
+  "properties": {
+    "version": {"const": 1},
+    "type": {"enum": ["health", "shutdown", "transcribe", "synthesize", "chunk-ack", "prepare-profile", "use-profile", "profile-ready", "ready", "transcript", "audio-chunk", "completed", "error"]},
+    "requestId": {"type": ["string", "null"], "pattern": "^[A-Za-z0-9_-]{1,100}$"},
+    "payload": {"type": "object"}
+  },
+  "allOf": [
+    {"if": {"properties": {"type": {"const": "ready"}}}, "then": {"properties": {"requestId": {"type": "null"}}}, "else": {"if": {"properties": {"type": {"const": "error"}}}, "then": {}, "else": {"properties": {"requestId": {"type": "string"}}}}},
+    {"if": {"properties": {"type": {"enum": ["health", "shutdown"]}}}, "then": {"properties": {"payload": {"maxProperties": 0}}}},
+    {"if": {"properties": {"type": {"const": "transcribe"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/transcribe"}}}},
+    {"if": {"properties": {"type": {"const": "synthesize"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/synthesize"}}}},
+    {"if": {"properties": {"type": {"const": "chunk-ack"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/ack"}}}},
+    {"if": {"properties": {"type": {"const": "ready"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/ready"}}}},
+    {"if": {"properties": {"type": {"const": "transcript"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/transcript"}}}},
+    {"if": {"properties": {"type": {"const": "audio-chunk"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/audio"}}}},
+    {"if": {"properties": {"type": {"enum": ["prepare-profile", "use-profile", "profile-ready"]}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/profile"}}}},
+    {"if": {"properties": {"type": {"const": "completed"}}}, "then": {"properties": {"payload": {"type": "object", "additionalProperties": false, "properties": {"metrics": {"type": "object", "additionalProperties": false, "properties": {"firstChunkMs": {"type": "number", "minimum": 0}, "totalMs": {"type": "number", "minimum": 0}, "audioSeconds": {"type": "number", "minimum": 0}, "chunks": {"type": "integer", "minimum": 1, "maximum": 128}, "peakCudaMiB": {"type": "number", "minimum": 0}}}}}}}},
+    {"if": {"properties": {"type": {"const": "error"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/error"}}}}
+  ],
+  "$defs": {
+    "profile": {
+      "type": "object", "additionalProperties": false, "required": ["profileId"],
+      "properties": {"profileId": {"type": "string", "pattern": "^(official-demo|voice-[a-f0-9-]{36})$"}}
+    },
+    "transcribe": {
+      "type": "object", "additionalProperties": false, "required": ["audio", "language"],
+      "properties": {
+        "audio": {"type": "string", "minLength": 4, "maxLength": 2560060},
+        "language": {"enum": ["auto", "zh", "en", "ja", "ko", "yue"]}
+      }
+    },
+    "synthesize": {
+      "type": "object", "additionalProperties": false, "required": ["text", "profileId", "stream"],
+      "properties": {
+        "text": {"type": "string", "minLength": 1, "maxLength": 600},
+        "profileId": {"type": "string", "pattern": "^[A-Za-z0-9_-]{1,100}$"},
+        "stream": {"type": "boolean"}
+      }
+    },
+    "ack": {
+      "type": "object", "additionalProperties": false, "required": ["index"],
+      "properties": {"index": {"type": "integer", "minimum": 0, "maximum": 127}}
+    },
+    "ready": {
+      "type": "object", "additionalProperties": false, "required": ["worker", "capabilities"],
+      "properties": {
+        "worker": {"enum": ["asr", "tts"]},
+        "capabilities": {"type": "array", "maxItems": 8, "uniqueItems": true, "items": {"enum": ["transcribe", "synthesize", "audioChunks", "voiceProfiles"]}}
+      }
+    },
+    "transcript": {
+      "type": "object", "additionalProperties": false, "required": ["text"],
+      "properties": {"text": {"type": "string", "maxLength": 4000}}
+    },
+    "audio": {
+      "type": "object", "additionalProperties": false, "required": ["index", "audio"],
+      "properties": {
+        "index": {"type": "integer", "minimum": 0, "maximum": 127},
+        "audio": {"type": "string", "minLength": 4, "maxLength": 349528}
+      }
+    },
+    "error": {
+      "type": "object", "additionalProperties": false, "required": ["code", "retryable"],
+      "properties": {
+        "code": {"enum": ["INVALID_REQUEST", "RESOURCE_MISSING", "ENGINE_LOAD", "INFERENCE_FAILED", "OUT_OF_MEMORY", "TIMEOUT", "CANCELLED", "INTERNAL"]},
+        "retryable": {"type": "boolean"}
+      }
+    }
+  }
+}

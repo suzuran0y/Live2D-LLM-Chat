@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "installable": false,
+  "bundles": [
+    {
+      "id": "sensevoice-small-legacy",
+      "files": [
+        "ASR_env/SenseVoice/models/SenseVoiceSmall/model.pt",
+        "ASR_env/SenseVoice/models/SenseVoiceSmall/config.yaml",
+        "ASR_env/SenseVoice/models/SenseVoiceSmall/tokens.json",
+        "ASR_env/SenseVoice/models/SenseVoiceSmall/am.mvn",
+        "ASR_env/SenseVoice/models/SenseVoiceSmall/chn_jpn_yue_eng_ko_spectok.bpe.model"
+      ]
+    },
+    {
+      "id": "cosyvoice2-legacy",
+      "files": [
+        "TTS_env/CosyVoice/cosyvoice/cli/cosyvoice.py",
+        "TTS_env/CosyVoice/pretrained_models/CosyVoice2-0.5B/cosyvoice.yaml",
+        "TTS_env/CosyVoice/pretrained_models/CosyVoice2-0.5B/llm.pt",
+        "TTS_env/CosyVoice/pretrained_models/CosyVoice2-0.5B/flow.pt",
+        "TTS_env/CosyVoice/pretrained_models/CosyVoice2-0.5B/hift.pt",
+        "TTS_env/CosyVoice/pretrained_models/CosyVoice2-0.5B/campplus.onnx",
+        "TTS_env/CosyVoice/pretrained_models/CosyVoice2-0.5B/speech_tokenizer_v2.onnx",
+        "TTS_env/CosyVoice/pretrained_models/CosyVoice2-0.5B/CosyVoice-BlankEN/config.json",
+        "TTS_env/CosyVoice/pretrained_models/CosyVoice2-0.5B/CosyVoice-BlankEN/model.safetensors",
+        "TTS_env/CosyVoice/pretrained_models/CosyVoice2-0.5B/CosyVoice-BlankEN/tokenizer_config.json",
+        "TTS_env/CosyVoice/pretrained_models/CosyVoice2-0.5B/CosyVoice-BlankEN/merges.txt",
+        "TTS_env/CosyVoice/pretrained_models/CosyVoice2-0.5B/CosyVoice-BlankEN/vocab.json"
+      ]
+    }
+  ]
+}

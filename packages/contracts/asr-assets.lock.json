@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "source": "Existing SenseVoiceSmall verified by M3 local inference; content lock, not a download catalogue",
+  "files": [
+    {
+      "name": "model.pt",
+      "bytes": 936291369,
+      "sha256": "833ca2dcfdf8ec91bd4f31cfac36d6124e0c459074d5e909aec9cabe6204a3ea"
+    },
+    {
+      "name": "config.yaml",
+      "bytes": 1952,
+      "sha256": "9db6921e149b3e3d677f8fb4a0f6532a5071f62c428cb06dfc98fbe14ec0b33e"
+    },
+    {
+      "name": "tokens.json",
+      "bytes": 377121,
+      "sha256": "f70eb5a5c1844eddac9c2741ea3057e98a360e3f07cc75e90b3030ea3410a5c6"
+    },
+    {
+      "name": "am.mvn",
+      "bytes": 11211,
+      "sha256": "38450e989178a72715b96b7e0b6072ba1e06f3334a56462ab465704f014e1105"
+    },
+    {
+      "name": "chn_jpn_yue_eng_ko_spectok.bpe.model",
+      "bytes": 377341,
+      "sha256": "aa87f86064c3730d799ddf7af3c04659151102cba548bce325cf06ba4da4e6a8"
+    }
+  ]
+}

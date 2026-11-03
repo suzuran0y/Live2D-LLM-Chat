@@ -1,0 +1,14 @@
+# Tested M0 development environment: Windows x64, CPython 3.12.3.
+# Exact package versions; this is not a speech-runtime or hash-verified wheel lock.
+attrs==26.1.0
+colorama==0.4.6
+iniconfig==2.3.1
+jsonschema==4.23.0
+jsonschema-specifications==2025.9.1
+packaging==26.3
+pluggy==1.7.0
+Pygments==2.21.0
+pytest==9.0.3
+referencing==0.37.0
+rpds-py==2026.9.1
+typing_extensions==4.16.0

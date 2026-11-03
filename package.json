@@ -1,0 +1,21 @@
+{
+  "name": "live2d-llm-chat-workspace",
+  "private": true,
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "setup:desktop": "pnpm --dir apps/desktop setup",
+    "start": "pnpm --dir apps/desktop start",
+    "test:desktop": "pnpm --dir apps/desktop test",
+    "smoke:desktop": "pnpm --dir apps/desktop smoke",
+    "smoke:avatar": "pnpm --dir apps/desktop smoke:avatar",
+    "smoke:speech": "pnpm --dir apps/desktop smoke:speech",
+    "check:speech": "node apps/desktop/tools/check-speech.cjs --asr",
+    "check:cosyvoice": "node apps/desktop/tools/check-cosyvoice.cjs",
+    "smoke:cosyvoice": "pnpm --dir apps/desktop smoke:cosyvoice",
+    "build:release": "node tools/build-release.cjs",
+    "pack:avatar": "node tools/build-resource-pack.cjs avatar",
+    "pack:asr": "node tools/build-resource-pack.cjs asr",
+    "check:release": "node tools/smoke-release.cjs",
+    "smoke:maintenance": "pnpm --dir apps/desktop smoke:maintenance"
+  }
+}

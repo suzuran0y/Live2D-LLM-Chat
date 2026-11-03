@@ -1,0 +1,2 @@
+# M0 tools only. Speech engines have separate environments in later milestones.
+jsonschema==4.23.0

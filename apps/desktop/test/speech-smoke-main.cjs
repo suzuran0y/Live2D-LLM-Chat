@@ -1,0 +1,71 @@
+'use strict';
+const { app } = require('electron');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const os = require('node:os');
+const http = require('node:http');
+const { boot } = require('../main.cjs');
+const { validateWave } = require('../lib/speech-backends.cjs');
+const example = require('../../../configs/v2.example.json');
+const ROOT = path.resolve(__dirname, '../../..'), root = fs.mkdtempSync(path.join(os.tmpdir(), 'live2d-speech-smoke-'));
+fs.mkdirSync(path.join(root, 'electron')); app.setPath('userData', path.join(root, 'electron'));
+app.commandLine.appendSwitch('use-fake-device-for-media-stream');
+let desktop, server, code = 1;
+app.on('window-all-closed', () => {});
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+async function waitFor(check, timeout = 20000) { const start = Date.now(); while (!(await check())) { if (Date.now() - start > timeout) throw Error('Speech smoke timeout'); await delay(40); } }
+app.whenReady().then(async () => {
+  server = http.createServer(async (request, response) => {
+    for await (const _chunk of request) {};
+    response.end(JSON.stringify({ choices: [{ message: { content: '你好，这是本地语音测试。我们正在验证录音、朗读和角色口型。' } }] }));
+  });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  const config = structuredClone(example); config.resources.legacyRoot = ROOT; config.llm.baseUrl = `http://127.0.0.1:${server.address().port}/v1`; config.llm.model = 'speech-fixture';
+  const source = path.join(root, 'config.json'); fs.writeFileSync(source, JSON.stringify(config));
+  let captured = 0;
+  const asr = { available: () => true, stop: async () => {}, transcribe: async bytes => { validateWave(bytes, true); captured++; return '这是一段语音测试。'; } };
+  desktop = await boot({ source, dataRoot: path.join(root, 'data'), show: false, speechOptions: { asr } });
+  let maxLevel = 0; desktop.speech.on('level', level => { maxLevel = Math.max(maxLevel, level); });
+  desktop.window.webContents.setAudioMuted(true);
+  const page = expression => desktop.window.webContents.executeJavaScript(expression);
+  const actor = expression => desktop.avatar.window.webContents.executeJavaScript(expression);
+  await waitFor(() => desktop.avatar.phase === 'ready');
+  await actor("window.__avatarLevels = []; window.avatarHost.onAudio(value => { if(value.level>0 && window.__avatarLevels.length<12)window.__avatarLevels.push({ level:value.level, stats:window.avatarView.stats() }); }); void 0;");
+  // Exercise speech and immediate mouth reset even when the compositor stops rAF.
+  await actor("window.requestAnimationFrame = () => 0; void 0;");
+  await waitFor(() => page("document.querySelectorAll('#conversations button').length===1"));
+  await page("window.__speechTracks = []; const media = navigator.mediaDevices; const capture = media.getUserMedia.bind(media); media.getUserMedia = async value => { const stream = await capture(value); window.__speechTracks.push(...stream.getTracks()); return stream; }; void 0;");
+  await page("document.getElementById('read-replies').click()"); await waitFor(() => desktop.speech.settings.enabled);
+  await page("document.getElementById('record').click()");
+  await waitFor(() => desktop.speech.phase === 'recording' || desktop.speech.phase === 'error');
+  assert.equal(desktop.speech.phase, 'recording', JSON.stringify(desktop.speech.state()));
+  assert.equal(await page("window.__speechTracks.some(track => track.readyState === 'live')"), true);
+  await delay(1300); await page("document.getElementById('record').click()");
+  await waitFor(() => desktop.speech.phase === 'playing' || desktop.speech.phase === 'error', 30000);
+  assert.equal(desktop.speech.phase, 'playing', JSON.stringify(desktop.speech.state())); assert.equal(captured, 1);
+  assert.equal(await page("window.__speechTracks.every(track => track.readyState === 'ended')"), true);
+  try { await waitFor(async () => (await actor('window.avatarView.stats()')).values.ParamMouthOpenY > 0.05); }
+  catch (error) { console.error(JSON.stringify({ maxLevel, speech: desktop.speech.state(), avatar: desktop.avatar.state(), output: await page('window.audioOutput.state'), stats: await actor('window.avatarView.stats()'), levels: await actor('window.__avatarLevels.filter(value=>value.level>0).map(value=>({ level:value.level, state:value.stats.state, mouth:value.stats.mouthLevel, audio:value.stats.audioLevel, range:value.stats.mouthRange, frames:value.stats.frames }))') })); throw error; }
+  const playbackId = desktop.speech.state().playbackId;
+  const output = path.join(ROOT, 'dist/m3-speech-preview.png');
+  fs.writeFileSync(output, (await desktop.window.webContents.capturePage(undefined, { stayHidden: true, stayAwake: true })).toPNG());
+  await page("document.getElementById('stop').click()"); await waitFor(() => desktop.speech.phase === 'idle');
+  await waitFor(async () => (await actor('window.avatarView.stats()')).values.ParamMouthOpenY === 0);
+  assert.equal(desktop.speech.level({ playbackId, level: 1 }), false);
+  const before = desktop.store.list().length;
+  const conversation = desktop.store.list()[0]; assert.equal(desktop.store.get(conversation.id).messages[0].content, '这是一段语音测试。');
+  await page("document.getElementById('record').click()"); await waitFor(() => desktop.speech.phase === 'recording');
+  await page("document.getElementById('stop').click()"); await waitFor(() => desktop.speech.phase === 'idle');
+  await delay(600); assert.equal(captured, 1); assert.equal(desktop.store.list().length, before);
+  assert.equal(await page("window.__speechTracks.length===2 && window.__speechTracks.every(track => track.readyState === 'ended')"), true);
+  assert.equal((await page('window.audioOutput.state')).playing, false);
+  desktop.window.close(); await waitFor(() => desktop.window.isDestroyed()); desktop = null;
+  desktop = await boot({ source, dataRoot: path.join(root, 'data'), show: false, speechOptions: { asr } });
+  desktop.window.webContents.setAudioMuted(true);
+  await waitFor(() => desktop.speech.focused === conversation.id);
+  assert.equal(desktop.speech.settings.enabled, true);
+  desktop.window.close(); await waitFor(() => desktop.window.isDestroyed()); desktop = null;
+  console.log('M3 smoke passed: fake microphone, WAV normalization, recognized text routing, real system TTS, mouth with stalled compositor, cancellation, microphone release and restart.');
+  console.log('Preview: ' + output); code = 0;
+}).catch(error => { console.error(error.stack); }).finally(() => { desktop?.window.destroy(); server?.closeAllConnections(); server?.close(); app.exit(code); });

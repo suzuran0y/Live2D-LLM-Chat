@@ -1,0 +1,4 @@
+# The existing CPU PyTorch environment is reused during M3 development.
+torch==2.6.0
+torchaudio==2.6.0
+numpy==1.26.4
