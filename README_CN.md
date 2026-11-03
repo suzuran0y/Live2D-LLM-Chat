@@ -2,8 +2,6 @@
 
 [English](README.md) | 中文
 
-[旧版cosyvoice2项目文档在此](docs/legacy/README_v1.md)
-
 [![ASR](https://img.shields.io/badge/ASR-SenseVoice-green.svg)](https://github.com/FunAudioLLM/SenseVoice)
 [![LLM](https://img.shields.io/badge/LLM-LM_Studio-red.svg)](https://lmstudio.ai/)
 [![TTS](https://img.shields.io/badge/TTS-CosyVoice3-orange.svg)](https://github.com/FunAudioLLM/CosyVoice)
@@ -11,11 +9,13 @@
 
 Live2D + ASR + LLM + TTS，本地角色语音交互。
 
+cosyvoice2项目文档 ➡ [旧版](docs/legacy/README_v1.md)
+
 ## 1. 项目简介
 
 **Live2D-LLM-Chat** 是一个集成 **Live2D 虚拟形象**、**语音识别（ASR）**、**大语言模型（LLM）**和**文本转语音（TTS）**的 AI 交互项目。虚拟角色可以识别用户的语音输入，由模型生成回复，再通过 TTS 播放语音并驱动嘴型同步，也支持直接进行文字聊天。
 
-v2 使用 Electron + Python 架构：Electron 管理桌面界面、角色渲染、会话和播放，Python 独立运行语音模型。角色与语音实现参考 [Cute-Partner](https://github.com/suzuran0y/Cute-Partner)。当前提供 Windows x64 预览版本。
+v2 使用 Electron + Python 架构：Electron 管理桌面界面、角色渲染、会话和播放，Python 独立运行语音模型。角色与语音实现参考 [Cute-Partner](https://github.com/suzuran0y/Cute-Partner)。
 
 ### 1.1. 主要功能
 
