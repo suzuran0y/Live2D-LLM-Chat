@@ -2,14 +2,14 @@
 
 English | [中文](README_CN.md)
 
-[The legacy CosyVoice2 project documentation is here.](docs/legacy/README_v1.md)
-
 [![ASR](https://img.shields.io/badge/ASR-SenseVoice-green.svg)](https://github.com/FunAudioLLM/SenseVoice)
 [![LLM](https://img.shields.io/badge/LLM-LM_Studio-red.svg)](https://lmstudio.ai/)
 [![TTS](https://img.shields.io/badge/TTS-CosyVoice3-orange.svg)](https://github.com/FunAudioLLM/CosyVoice)
 [![Live2D](https://img.shields.io/badge/Live2D-Cubism-blue.svg)](https://www.live2d.com/)
 
 Live2D + ASR + LLM + TTS for local character conversations.
+
+The legacy CosyVoice2 project documentation ➡ [The previous version](docs/legacy/README_v1.md)
 
 ## 1. Project Introduction
 
